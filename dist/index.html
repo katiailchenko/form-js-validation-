@@ -13,35 +13,35 @@
     <main>
       <form class="form" action="#" method="POST">
         <fieldset>
-          <div class="first-name-block form__item">
+          <div class="first-name-block form__item" data-role="input-block" data-validation="text">
             <label for="first-name">First name*</label>
-            <input type="text" id="first-name" name="first-name" data-validation="text"><span class="error"></span>
+            <input type="text" id="first-name" name="first-name"><span class="error"></span>
           </div>
-          <div class="last-name-block form__item">
+          <div class="last-name-block form__item" data-role="input-block" data-validation="text">
             <label for="last-name">Last name*</label>
-            <input type="text" id="last-name" name="last-name" data-validation="text"><span class="error"></span>
+            <input type="text" id="last-name" name="last-name"><span class="error"></span>
           </div>
-          <div class="birthday-block form__item">
+          <div class="birthday-block form__item" data-role="input-block" data-validation="text">
             <label for="birthday">Birthday*</label>
-            <input type="date" id="birthday" name="birthday" min="1919-01-01" max="2010-01-01" data-validation="text">
+            <input type="date" id="birthday" name="birthday" min="1919-01-01" max="2010-01-01">
             <div><span class="error"></span></div>
           </div>
-          <div class="gender-block form__item">
+          <div class="gender-block form__item" data-role="input-block" data-validation="radio">
             <label>Gender*</label>
             <div class="radio">
               <div class="gender-block__item">
-                <input type="radio" name="gender" value="male" data-validation="radio"><span>Male</span>
+                <input type="radio" name="gender" value="male"><span>Male</span>
               </div>
               <div class="gender-block__item">
-                <input type="radio" name="gender" value="female" data-validation="radio"><span>Female</span>
+                <input type="radio" name="gender" value="female"><span>Female</span>
               </div>
             </div><span class="error"></span>
           </div>
-          <div class="country-block form__item">
+          <div class="country-block form__item" data-role="input-block" data-validation="coutry">
             <label>Country* </label>
             <div class="country-select">
               <select name="country">
-                <option value="country" data-validation="coutry">Country</option>
+                <option value="country">Country</option>
                 <option value="ukraine">Ukraine</option>
                 <option value="russia">Russia</option>
                 <option value="usa">USA</option>
@@ -50,17 +50,17 @@
               </select>
             </div><span class="error"></span>
           </div>
-          <div class="address-block form__item">
+          <div class="address-block form__item" data-role="input-block" data-validation="text">
             <label for="address">Address*</label>
-            <input type="text" id="address" name="address" data-validation="text"><span class="error"></span>
+            <input type="text" id="address" name="address"><span class="error"></span>
           </div>
-          <div class="email-block form__item">
+          <div class="email-block form__item" data-role="input-block" data-validation="email">
             <label for="email">Email*</label>
-            <input id="email" name="email" data-validation="email"><span class="error"></span>
+            <input id="email" name="email"><span class="error"></span>
           </div>
-          <div class="password-block form__item">
+          <div class="password-block form__item" data-role="input-block" data-validation="text">
             <label for="password">Password*</label>
-            <input type="password" id="password" name="password" minlength="5" autocomplete="off" data-validation="text"><span class="error"></span>
+            <input type="password" id="password" name="password" minlength="5" autocomplete="off"><span class="error"></span>
           </div>
           <div class="notes-block form__item">
             <textarea placeholder="Your message" name="comment"></textarea>

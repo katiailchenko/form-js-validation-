@@ -1,8 +1,9 @@
 
   let form = document.querySelector('form');
-  let inputs = form.querySelectorAll('input');
+  let inputBlocks = form.querySelectorAll('[data-role="input-block"]');
   let errors = form.querySelectorAll('.error');
-  let labels = form.querySelectorAll('label, p');
+  let labels = form.querySelectorAll('label');
+
 
   
   function isEmpty(str) {
@@ -22,29 +23,34 @@
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
-  
-    for (var i = 0; i < inputs.length; i++) {
+    
+    
+    for (var i = 0; i < inputBlocks.length; i++) {
+
       function notRequired() {
         errors[i].innerHTML = 'This field is required';
-        inputs[i].classList.add('invalid');
+        input.classList.add('invalid');
         labels[i].classList.add('error');
       };
 
       function removeError() {
         errors[i].innerHTML = '';
-        inputs[i].classList.remove('invalid');
+        input.classList.remove('invalid');
         labels[i].classList.remove('error');
       };
 
-      let atr = inputs[i].getAttribute('data-validation');
+      const input = inputBlocks[i].querySelector('input');
+      const inputs = inputBlocks[i].querySelectorAll('input');
+      const options = inputBlocks[i].querySelectorAll('option');
+      let atr = inputBlocks[i].getAttribute('data-validation');
 
         switch(atr) {
           case 'text':
-          if (isEmpty(inputs[i].value)) {
+          if (isEmpty(input.value)) {
             notRequired();
-          }else if(isBadText(inputs[i].value)) {
+          }else if(isBadText(input.value)) {
             errors[i].innerHTML = 'This text is not valid';
-            inputs[i].classList.add('invalid');
+            input.classList.add('invalid');
             labels[i].classList.add('error');
           } else {
             removeError()
@@ -52,21 +58,21 @@
           break;
 
           case 'email':
-          if (!isEmail(inputs[i].value)) {
+          if (!isEmail(input.value)) {
             errors[i].innerHTML = 'This email is not valid';
-            inputs[i].classList.add('invalid');
+            input.classList.add('invalid');
             labels[i].classList.add('error');
           };
 
-          if (isEmpty(inputs[i].value)) {
+          if (isEmpty(input.value)) {
             notRequired();
-          } else if(isEmail(inputs[i].value)){
+          } else if(isEmail(input.value)){
             removeError()
           }
           break;
 
           case 'radio':
-            if(inputs[i].checked == false && inputs[i+1].checked == false) {
+            if(inputs[0].checked == false && inputs[1].checked == false) {
               notRequired();
             } else {
               removeError()
@@ -74,17 +80,15 @@
 
           break;
 
-          // case 'country':
-
-          // break;
+          case 'country':
+            if(options.selectedIndex == 0){
+              console.log('country 0')
+            } else {
+              removeError()
+            }
+            break;
         };
 
-        // let notCountry = form.querySelector('[data-validation="coutry"]');
 
-        // if(notCountry){
-        //   notRequired()
-        // } else {
-        //   removeError()
-        // };
     }
   });
