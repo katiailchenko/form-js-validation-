@@ -1,0 +1,59 @@
+extends ../layout 
+
+block vars
+  -title= 'Valid Form'
+  
+block content
+  main
+    form.form(action="#" method="POST")
+      fieldset
+        div.first-name-block.form__item
+          label(for="first-name") First name*
+          input(type="text" id="first-name" name="first-name" data-validation="text")
+          span.error
+        div.last-name-block.form__item
+          label(for="last-name") Last name*
+          input(type="text" id="last-name" name="last-name" data-validation="text")
+          span.error
+        div.birthday-block.form__item
+          label(for="birthday") Birthday*
+          input(type="date" id="birthday" name="birthday" min="1919-01-01" max="2010-01-01" data-validation="text")
+          div
+            span.error
+        div.gender-block.form__item
+          label Gender*
+          div.radio
+            div.gender-block__item
+                input(type="radio" name="gender" value="male" data-validation="radio")
+                span Male
+            div.gender-block__item
+                input(type="radio" name="gender" value="female" data-validation="radio")
+                span Female
+          span.error
+        div.country-block.form__item
+          label Country* 
+          div.country-select
+            select(name="country")
+              option(value="country" data-validation="coutry") Country
+              option(value="ukraine") Ukraine
+              option(value="russia") Russia
+              option(value="usa") USA
+              option(value="poland") Poland
+              option(value="japan") Japan
+          span.error
+        div.address-block.form__item
+          label(for="address") Address*
+          input(type="text" id="address" name="address" data-validation="text")
+          span.error
+        div.email-block.form__item
+          label(for="email") Email*
+          input( id="email" name="email" data-validation="email")
+          span.error
+        div.password-block.form__item
+          label(for="password") Password*
+          input(type="password" id="password" name="password" minlength="5" autocomplete="off" data-validation="text")
+          span.error
+        div.notes-block.form__item
+          textarea(placeholder="Your message"  name="comment")
+      div.button-block
+        button(type="submit") Submit

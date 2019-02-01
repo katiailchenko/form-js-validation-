@@ -1,0 +1,126 @@
+@import 'reset';
+
+* {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fff;
+  font-family: "Times New Roman", sans-serif;
+  // background-image: url();
+  background-repeat: no-repeat;
+  background-size: cover;
+  outline: none;
+  color: #000;
+}
+
+.form {
+  width: 30%;
+  max-width: 600px;
+  min-width: 320px;
+  margin: 60px auto;
+  border: 1px solid #000;
+  padding: 30px 50px;
+  border-radius: 15px;
+
+  &__item {
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+  }
+}
+
+label, p {
+  display: block;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: green;
+}
+
+input, textarea {
+  width: 100%;
+  font-size: 16px;
+  border: 1px solid #000;
+  border-radius: 5px;
+  outline: none;
+  padding: 5px 10px;
+}
+
+textarea {
+  resize: none;
+  height: 100px;
+}
+
+::placeholder {
+  font-size: 16px;
+  font-family: 'Playfair Display', serif;
+}
+
+.gender-block{
+
+  .radio {
+    margin: 0 auto;
+    width: 200px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__item{
+    span {
+      font-family: 'Playfair Display', serif;
+    }
+
+    input {
+      margin: 0;
+      cursor: pointer;
+    }
+  }
+}
+
+.birthday-block {
+  input {
+    width: 200px;
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+.country-select {
+  select {
+    width: 200px;
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    border: 1px solid #000;
+    border-radius: 5px;
+    outline: none;
+    padding: 5px 10px;
+  }
+}
+
+.button-block {
+  text-align: center;
+
+  button {
+    background-color: #fff;
+    border: 1px solid green;
+    border-radius: 10px;
+    padding: 10px 25px;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    outline: none;
+    cursor: pointer;
+  }
+
+}
+
+.error {
+  color: red;
+}
+
+.invalid {
+  border-color: red;
+}
+
