@@ -1,9 +1,5 @@
-# TITLE
-*Subtitle*
+# FORM
+*JS validation*
 
-**Technologies:**
-* html (pug) 
-* css (scss)
-* js (jquery)
 
-[DEMO]()
+[DEMO](https://katiailchenko.github.io/form-js-validation-/dist/index.html)
