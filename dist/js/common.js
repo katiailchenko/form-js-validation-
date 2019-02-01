@@ -31,7 +31,7 @@
       };
 
       function removeError() {
-        errors[i].remove();
+        errors[i].innerHTML = '';
         inputs[i].classList.remove('invalid');
         labels[i].classList.remove('error');
       };
@@ -79,12 +79,12 @@
           // break;
         };
 
-        let notCountry = form.querySelector('[data-validation="coutry"]');
+        // let notCountry = form.querySelector('[data-validation="coutry"]');
 
-        if(notCountry){
-          notRequired()
-        } else {
-          removeError()
-        };
+        // if(notCountry){
+        //   notRequired()
+        // } else {
+        //   removeError()
+        // };
     }
   });
