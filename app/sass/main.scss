@@ -5,22 +5,19 @@
   box-sizing: border-box;
 }
 
-body {
+main {
   background-color: #fff;
   font-family: "Times New Roman", sans-serif;
-  // background-image: url();
-  background-repeat: no-repeat;
-  background-size: cover;
   outline: none;
   color: #000;
 }
 
 .form {
-  width: 30%;
+  background-color: rgba($color:green, $alpha: .1);
+  width: 35%;
   max-width: 600px;
   min-width: 320px;
-  margin: 60px auto;
-  border: 1px solid #000;
+  margin: auto;
   padding: 30px 50px;
   border-radius: 15px;
 
@@ -40,7 +37,7 @@ label, p {
   color: green;
 }
 
-input, textarea {
+input, textarea, select {
   width: 100%;
   font-size: 16px;
   border: 1px solid #000;
@@ -60,6 +57,13 @@ textarea {
 }
 
 .gender-block{
+  white-space: nowrap;
+
+  label {
+    font-size: 16px;
+    color: #000;
+    font-weight: 400;
+  }
 
   .radio {
     margin: 0 auto;
@@ -69,13 +73,15 @@ textarea {
   }
 
   &__item{
+    
     span {
       font-family: 'Playfair Display', serif;
     }
 
     input {
-      margin: 0;
+      margin: 0 auto;
       cursor: pointer;
+      width: 20px;
     }
   }
 }
@@ -88,14 +94,9 @@ textarea {
 }
 
 .country-select {
-  select {
+  .select {
     width: 200px;
     font-family: 'Playfair Display', serif;
-    font-size: 16px;
-    border: 1px solid #000;
-    border-radius: 5px;
-    outline: none;
-    padding: 5px 10px;
   }
 }
 
@@ -121,6 +122,17 @@ textarea {
 }
 
 .invalid {
-  border-color: red;
+  input{
+    border-color: red;
+  }
+
+  select {
+    border-color: red;
+  }
+
+  label,
+  p {
+    color: red;
+  }
 }
 

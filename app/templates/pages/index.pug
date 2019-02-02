@@ -7,53 +7,55 @@ block content
   main
     form.form(action="#" method="POST")
       fieldset
-        div.first-name-block.form__item(data-role="input-block" data-validation="text")
-          label(for="first-name") First name*
-          input(type="text" id="first-name" name="first-name" )
-          span.error
-        div.last-name-block.form__item(data-role="input-block" data-validation="text")
-          label(for="last-name") Last name*
-          input(type="text" id="last-name" name="last-name" )
-          span.error
-        div.birthday-block.form__item(data-role="input-block" data-validation="text")
-          label(for="birthday") Birthday*
-          input(type="date" id="birthday" name="birthday" min="1919-01-01" max="2010-01-01" )
+        div.first-name-block.form__item(data-role="input-block" data-required="true" data-validation="text")
+          label(for="first-name" data-role="label") First name*
+          input(type="text" id="first-name" name="first-name" data-role="input")
+          span(data-role="error").error
+        div.last-name-block.form__item(data-role="input-block" data-required="true" data-validation="text")
+          label(data-role="label" for="last-name") Last name*
+          input(data-role="input" type="text" id="last-name" name="last-name" )
+          span(data-role="error").error
+        div.birthday-block.form__item(data-role="input-block" data-required="true" data-validation="text")
+          label(data-role="label" for="birthday") Birthday*
+          input(data-role="input" type="date" id="birthday" name="birthday" min="1919-01-01" max="2010-01-01" )
           div
-            span.error
-        div.gender-block.form__item(data-role="input-block" data-validation="radio")
-          label Gender*
+            span(data-role="error").error
+        div.gender-block.form__item(data-role="input-block" data-required="true" data-type="radio")
+          p(data-role="label") Gender*
           div.radio
-            div.gender-block__item
-                input(type="radio" name="gender" value="male" )
+            label.gender-block__item
+                input(data-role="input" type="radio" name="gender" value="male" )
                 span Male
-            div.gender-block__item
-                input(type="radio" name="gender" value="female" )
+            label.gender-block__item
+                input(data-role="input" type="radio" name="gender" value="female" )
                 span Female
-          span.error
-        div.country-block.form__item(data-role="input-block" data-validation="coutry")
-          label Country* 
+          span(data-role="error").error
+        div.country-block.form__item(data-role="input-block" data-required="true")
+          label(data-role="label") Country*
           div.country-select
-            select(name="country")
-              option(value="country") Country
+            select.select(data-role="input" name="country")
+              option(value="") Country
               option(value="ukraine") Ukraine
               option(value="russia") Russia
               option(value="usa") USA
               option(value="poland") Poland
               option(value="japan") Japan
-          span.error
-        div.address-block.form__item(data-role="input-block" data-validation="text")
-          label(for="address") Address*
-          input(type="text" id="address" name="address" )
-          span.error
-        div.email-block.form__item(data-role="input-block" data-validation="email")
-          label(for="email") Email*
-          input( id="email" name="email" )
-          span.error
-        div.password-block.form__item(data-role="input-block" data-validation="text")
-          label(for="password") Password*
-          input(type="password" id="password" name="password" minlength="5" autocomplete="off" )
-          span.error
-        div.notes-block.form__item
-          textarea(placeholder="Your message"  name="comment")
+          span(data-role="error").error
+        div.address-block.form__item(data-role="input-block" data-required="true" data-validation="text")
+          label(data-role="label" for="address") Address*
+          input(data-role="input" type="text" id="address" name="address" )
+          span(data-role="error").error
+        div.email-block.form__item(data-role="input-block" data-required="true" data-validation="email")
+          label(data-role="label" for="email") Email*
+          input(data-role="input" id="email" name="email" type="email")
+          span(data-role="error").error
+        div.password-block.form__item(data-role="input-block" data-required="true" data-validation="text")
+          label(data-role="label" for="password") Password*
+          input(data-role="input" type="password" id="password" name="password" minlength="5" autocomplete="off" )
+          span(data-role="error").error
+        div.notes-block.form__item(data-role="input-block" data-validation="text")
+          label(data-role="label" for="password") Message
+          textarea(data-role="input" placeholder="Your message"  name="comment")
+          span(data-role="error").error
       div.button-block
         button(type="submit") Submit

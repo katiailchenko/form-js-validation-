@@ -1,10 +1,13 @@
 
   let form = document.querySelector('form');
   let inputBlocks = form.querySelectorAll('[data-role="input-block"]');
-  let errors = form.querySelectorAll('.error');
-  let labels = form.querySelectorAll('label');
+  let valid = true;
 
-
+  const errorMessage = {
+    required: 'This field is required',
+    badText: 'Field shouldn\'t contain quotes',
+    email: 'Please enter correct email'
+  }
   
   function isEmpty(str) {
     return (str !== 0 && !str || /^\s*$/.test(str));
@@ -19,76 +22,84 @@
     return re.test(str);
   };
 
+ 
 
+  function validate(field) {
+    const {value, required, validation} = field;
+    const validationResult = {
+      valid: true,
+      error: ''
+    }
+
+    if (required && isEmpty(value)) {
+      validationResult.valid = false;
+      validationResult.error = errorMessage.required;
+    }
+
+    if (validationResult.valid && validation && !isEmpty(value)) {
+        switch (validation) {
+          case 'text': {
+            if (isBadText(value)) {
+              validationResult.valid = false;
+              validationResult.error = errorMessage.badText;
+            }
+            break;
+          }
+          case 'email': {
+            if (!isEmail(value)) {
+              validationResult.valid = false;
+              validationResult.error = errorMessage.email;
+            }
+            break;
+          }
+          defaul: {
+            console.log('This field can\'t be validated');
+          }
+        }
+    }
+
+    return validationResult;
+
+  }
 
   form.addEventListener('submit', function (event) {
     event.preventDefault();
     
     
     for (var i = 0; i < inputBlocks.length; i++) {
-
-      function notRequired() {
-        errors[i].innerHTML = 'This field is required';
-        input.classList.add('invalid');
-        labels[i].classList.add('error');
+      const inputBlock = inputBlocks[i];
+      const input = inputBlock.querySelector('[data-role="input"]');
+      const error = inputBlock.querySelector('[data-role="error"]');
+      const label = inputBlock.querySelector('[data-role="label"]');
+      let validationResult = {
+        valid: true,
+        error: ''
       };
+      
+      let {validation, type, required} = inputBlock.dataset;
 
-      function removeError() {
-        errors[i].innerHTML = '';
-        input.classList.remove('invalid');
-        labels[i].classList.remove('error');
-      };
+      if (type === 'radio') {
+        const inputs = Array.from(inputBlock.querySelectorAll('[data-role="input"]'));
+        validationResult.valid = inputs.filter(function(radio) {return radio.checked}).length > 0;
+        validationResult.error = validationResult.valid ? '' : errorMessage.required;
+      } else {
+        const field = {
+          value: input.value,
+          validation,
+          required
+        }
+        validationResult = validate(field);
+      }
 
-      const input = inputBlocks[i].querySelector('input');
-      const inputs = inputBlocks[i].querySelectorAll('input');
-      const options = inputBlocks[i].querySelectorAll('option');
-      let atr = inputBlocks[i].getAttribute('data-validation');
+      inputBlock.classList.toggle('invalid', !validationResult.valid);
+      error.innerHTML = validationResult.error;
 
-        switch(atr) {
-          case 'text':
-          if (isEmpty(input.value)) {
-            notRequired();
-          }else if(isBadText(input.value)) {
-            errors[i].innerHTML = 'This text is not valid';
-            input.classList.add('invalid');
-            labels[i].classList.add('error');
-          } else {
-            removeError()
-          }
-          break;
+      if (!validationResult.valid) {
+        valid = false;
+      }
 
-          case 'email':
-          if (!isEmail(input.value)) {
-            errors[i].innerHTML = 'This email is not valid';
-            input.classList.add('invalid');
-            labels[i].classList.add('error');
-          };
-
-          if (isEmpty(input.value)) {
-            notRequired();
-          } else if(isEmail(input.value)){
-            removeError()
-          }
-          break;
-
-          case 'radio':
-            if(inputs[0].checked == false && inputs[1].checked == false) {
-              notRequired();
-            } else {
-              removeError()
-            }
-
-          break;
-
-          case 'country':
-            if(options.selectedIndex == 0){
-              console.log('country 0')
-            } else {
-              removeError()
-            }
-            break;
-        };
-
-
+    }
+    if (valid) {
+      alert('Congratulations. Form has been sent.')
     }
   });

@@ -62,20 +62,18 @@ svg {
   scroll-behavior: smooth;
   box-sizing: border-box; }
 
-body {
+main {
   background-color: #fff;
   font-family: "Times New Roman", sans-serif;
-  background-repeat: no-repeat;
-  background-size: cover;
   outline: none;
   color: #000; }
 
 .form {
-  width: 30%;
+  background-color: rgba(0, 128, 0, 0.1);
+  width: 35%;
   max-width: 600px;
   min-width: 320px;
-  margin: 60px auto;
-  border: 1px solid #000;
+  margin: auto;
   padding: 30px 50px;
   border-radius: 15px; }
   .form__item {
@@ -91,7 +89,7 @@ label, p {
   margin-bottom: 10px;
   color: green; }
 
-input, textarea {
+input, textarea, select {
   width: 100%;
   font-size: 16px;
   border: 1px solid #000;
@@ -107,31 +105,31 @@ textarea {
   font-size: 16px;
   font-family: 'Playfair Display', serif; }
 
-.gender-block .radio {
-  margin: 0 auto;
-  width: 200px;
-  display: flex;
-  justify-content: space-between; }
-
-.gender-block__item span {
-  font-family: 'Playfair Display', serif; }
-
-.gender-block__item input {
-  margin: 0;
-  cursor: pointer; }
+.gender-block {
+  white-space: nowrap; }
+  .gender-block label {
+    font-size: 16px;
+    color: #000;
+    font-weight: 400; }
+  .gender-block .radio {
+    margin: 0 auto;
+    width: 200px;
+    display: flex;
+    justify-content: space-between; }
+  .gender-block__item span {
+    font-family: 'Playfair Display', serif; }
+  .gender-block__item input {
+    margin: 0 auto;
+    cursor: pointer;
+    width: 20px; }
 
 .birthday-block input {
   width: 200px;
   font-family: 'Playfair Display', serif; }
 
-.country-select select {
+.country-select .select {
   width: 200px;
-  font-family: 'Playfair Display', serif;
-  font-size: 16px;
-  border: 1px solid #000;
-  border-radius: 5px;
-  outline: none;
-  padding: 5px 10px; }
+  font-family: 'Playfair Display', serif; }
 
 .button-block {
   text-align: center; }
@@ -149,7 +147,14 @@ textarea {
 .error {
   color: red; }
 
-.invalid {
+.invalid input {
   border-color: red; }
+
+.invalid select {
+  border-color: red; }
+
+.invalid label,
+.invalid p {
+  color: red; }
 
 /*# sourceMappingURL=main.css.map */
